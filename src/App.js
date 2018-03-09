@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 // import Map from './Components/Map'
 import GoogleMap from './Components/GoogleMap'
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Nav from './Components/nav'
+import BottomNavigationExampleSimple from './Components/bottomNav'
+import DrawerSimpleExample from './Components/sideBar'
 
 class App extends Component {
   constructor(){
@@ -49,19 +54,37 @@ class App extends Component {
     }
     return (
       <div className="App">
+
+  {/* Navigation bar from nav.js */}
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <Nav />
+        </MuiThemeProvider>
+
         <div id="container" style={style}>
-        <GoogleMap 
-          getClick={this.getClick} 
-          setMarker={this.setMarker} 
-          markers={this.state.markers} 
-        />
-        </div>
-        <div>Current Selection: {this.state.currentSelection.name}
-          
+          <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <DrawerSimpleExample />
+          </MuiThemeProvider>
+
+          <GoogleMap 
+            getClick={this.getClick} 
+            setMarker={this.setMarker} 
+            markers={this.state.markers} 
+          />
+          </div>
+          <div>Current Selection: {this.state.currentSelection.name}
+            
         </div>
         {(this.state.currentSelection.name !== '' && <a onClick={this.onClick} href="#">
             Delete Marker
           </a>)}
+
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <BottomNavigationExampleSimple />
+        </MuiThemeProvider>
+        
+
+          
+        
       </div>
     );
   }
