@@ -11,10 +11,10 @@ export default class ToggleEventCard extends React.Component {
     this.state = {
       expanded: false,
     };
-    this.handleClick = this.hangleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   };
 
-  hangleClick() {
+  handleClick() {
     this.setState(function(prevState){
       return {expanded: !prevState.expanded};
     });
