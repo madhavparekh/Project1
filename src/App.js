@@ -1,22 +1,25 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 // import Map from './Components/Map'
-import GoogleMap from './Components/GoogleMap'
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Nav from './Components/nav'
-import BottomNavigationExampleSimple from './Components/bottomNav'
-import DrawerSimpleExample from './Components/sideBar'
+import GoogleMap from "./Components/GoogleMap";
+import getMuiTheme from "material-ui/styles/getMuiTheme";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import Nav from "./Components/nav.jsx";
+import BottomNav from "./Components/bottomNav.jsx";
+import SideBar from "./Components/sideBar.jsx";
+import EventCard from "./Components/EventCard.jsx";
+import ToggleEventCard from "./Components/ToggleEventCard.jsx";
+import AboutUsIcon from "./Components/AboutUs.jsx";
 
 class App extends Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
-      currentSelection:  {
-        name: '',
-        id: ''
+      currentSelection: {
+        name: "",
+        id: "",
       },
-      markers: []
+      markers: [],
     };
     this.getClick = this.getClick.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -26,65 +29,70 @@ class App extends Component {
     this.setState({
       currentSelection: {
         name: selection.name,
-        id: selection.id
-      }
-    })
+        id: selection.id,
+      },
+    });
   }
-  setMarker(marker){
+  setMarker(marker) {
     this.setState({
-      markers: marker.markers
-    })
+      markers: marker.markers,
+    });
   }
-  onClick(event){
+  onClick(event) {
     var markers = this.state.markers;
     markers.splice(this.state.currentSelection.id, 1);
     this.setState({
       markers: markers,
       currentSelection: {
-        name: '',
-        id: ''
-      }
+        name: "",
+        id: "",
+      },
     });
   }
   render() {
     const style = {
-      width: '500px',
-      height: '500px',
-      zIndex: -1
-    }
+      width: "500px",
+      height: "500px",
+      zIndex: -1,
+    };
     return (
       <div className="App">
-
-  {/* Navigation bar from nav.js */}
+        {/* Navigation bar from nav.js */}
         <MuiThemeProvider muiTheme={getMuiTheme()}>
-            <Nav />
+          <Nav />
+        </MuiThemeProvider>
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <AboutUsIcon />
+        </MuiThemeProvider>
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <ToggleEventCard />
         </MuiThemeProvider>
 
         <div id="container" style={style}>
           <MuiThemeProvider muiTheme={getMuiTheme()}>
-            <DrawerSimpleExample />
+            <SideBar>
+              <MuiThemeProvider muiTheme={getMuiTheme()}>
+                <EventCard />
+              </MuiThemeProvider>
+            </SideBar>
           </MuiThemeProvider>
 
-          <GoogleMap 
-            getClick={this.getClick} 
-            setMarker={this.setMarker} 
-            markers={this.state.markers} 
+          <GoogleMap
+            getClick={this.getClick}
+            setMarker={this.setMarker}
+            markers={this.state.markers}
           />
-          </div>
-          <div>Current Selection: {this.state.currentSelection.name}
-            
         </div>
-        {(this.state.currentSelection.name !== '' && <a onClick={this.onClick} href="#">
+        <div>Current Selection: {this.state.currentSelection.name}</div>
+        {this.state.currentSelection.name !== "" && (
+          <a onClick={this.onClick} href="#">
             Delete Marker
-          </a>)}
+          </a>
+        )}
 
         <MuiThemeProvider muiTheme={getMuiTheme()}>
-            <BottomNavigationExampleSimple />
+          <BottomNav />
         </MuiThemeProvider>
-        
-
-          
-        
       </div>
     );
   }
