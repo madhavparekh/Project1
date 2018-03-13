@@ -26,7 +26,6 @@ export default class ToggleEventCard extends React.Component {
     this.setState({
       expanded: expanded,
       isToggleOn: false
-
     });
 
   };
@@ -39,14 +38,11 @@ export default class ToggleEventCard extends React.Component {
           subtitle="March 10 2018 6:45PM"
           avatar={<img src={logo1}/>}
           actAsExpander={true}
-        />
+        >
           <FlatButton onClick={this.handleClick}>
             {this.state.isToggleOn ? 'More Info' : 'Less Info'}
           </FlatButton>
-          
-        <CardText>
-          
-        </CardText>
+        </CardHeader>
         
         <CardText expandable={true}>
           DESCRIPTION 
@@ -55,14 +51,6 @@ export default class ToggleEventCard extends React.Component {
           Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
           Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
         </CardText>
-        <CardActions>
-{/*          <FlatButton 
-            label="Expand" 
-            onClick={this.handleExpand} 
-            actAsExpander={true}
-          />
-          <FlatButton label="Reduce" onClick={this.handleReduce} />
-*/}        </CardActions>
       </Card>
     );
   }

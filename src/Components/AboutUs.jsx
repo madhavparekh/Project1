@@ -5,8 +5,6 @@ import ActionHome from "material-ui/svg-icons/action/home";
 
 const AboutUsIcon = () => (
   <div>
-    
-
     <IconButton
       tooltip={
         <div style={{ width: 250, whiteSpace: 'normal', textAlign: 'left' }}>
@@ -22,16 +20,6 @@ const AboutUsIcon = () => (
         </div>
       </FontIcon>
     </IconButton>
-
-
-
-
-
-
-
-
-
-
   </div>
 );
 
