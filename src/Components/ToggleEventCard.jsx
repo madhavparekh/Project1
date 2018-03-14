@@ -1,7 +1,9 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import logo1 from '../static/images/eventBeast1_200.png';
+
 
 
 export default class ToggleEventCard extends React.Component {
@@ -39,10 +41,11 @@ export default class ToggleEventCard extends React.Component {
           avatar={<img src={logo1}/>}
           actAsExpander={true}
         >
-          <FlatButton onClick={this.handleClick}>
-            {this.state.isToggleOn ? 'More Info' : 'Less Info'}
-          </FlatButton>
+        <FlatButton onClick={this.handleClick}>
+          {this.state.isToggleOn ? 'More Info' : 'Less Info'}
+        </FlatButton>
         </CardHeader>
+        
         
         <CardText expandable={true}>
           DESCRIPTION 

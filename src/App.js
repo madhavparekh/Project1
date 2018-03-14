@@ -59,7 +59,7 @@ class App extends Component {
       <div className="App">
         {/* Navigation bar from nav.js */}
         <MuiThemeProvider muiTheme={getMuiTheme()}>
-          <Nav />
+          <Nav/>
         </MuiThemeProvider>
         <MuiThemeProvider muiTheme={getMuiTheme()}>
           <AboutUsIcon />

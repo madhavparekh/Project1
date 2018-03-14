@@ -2,33 +2,34 @@ import React from 'react';
 import {Card, CardActions, CardHeader, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import logo1 from '../static/images/eventBeast1_200.png';
+import RaisedButton from 'material-ui/RaisedButton';
 
 
-export default class EventCard extends React.Component {
+export default class ToggleEventCard extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       expanded: false,
+      isToggleOn: true
     };
-  }
+    this.handleClick = this.handleClick.bind(this);
+  };
+
+  handleClick() {
+    this.setState(function(prevState){
+      return {expanded: !prevState.expanded};
+      return {isToggleOn: !prevState.isToggleOn};
+    });
+  };
 
   handleExpandChange = (expanded) => {
-    this.setState({expanded: expanded});
+    this.setState({
+      expanded: expanded,
+      isToggleOn: false
+    });
+
   };
-
-  handleExpand = () => {
-    this.setState({expanded: true});
-  };
-
-  handleReduce = () => {
-    this.setState({expanded: false});
-  };
-
-  // const cardStyle = {
-  //   height: 20px;
-
-  // };
 
   render() {
     return (
@@ -38,11 +39,12 @@ export default class EventCard extends React.Component {
           subtitle="March 10 2018 6:45PM"
           avatar={<img src={logo1}/>}
           actAsExpander={true}
-          showExpandableButton={true}
-        />
-        <CardText>
+        >
           
-        </CardText>
+        </CardHeader>
+        <FlatButton onClick={this.handleClick}>
+          {this.state.isToggleOn ? 'More Info' : 'Less Info'}
+        </FlatButton>
         
         <CardText expandable={true}>
           DESCRIPTION 
@@ -51,14 +53,6 @@ export default class EventCard extends React.Component {
           Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
           Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
         </CardText>
-        <CardActions>
-          <FlatButton 
-            label="Expand" 
-            onClick={this.handleExpand} 
-            actAsExpander={true}
-          />
-          <FlatButton label="Reduce" onClick={this.handleReduce} />
-        </CardActions>
       </Card>
     );
   }
