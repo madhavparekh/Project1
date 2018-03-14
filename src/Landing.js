@@ -4,6 +4,7 @@ import SearchBar from './Components/SearchBar';
 import {categories} from './api/MeetUpAPI';
 import GoogleMap from './Components/GoogleMap'
 import queryString from 'query-string'
+import Paper from 'material-ui/Paper';
 
 //Theme and styling
 import BeastTheme from './style/BeastTheme';
@@ -12,6 +13,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './style/App.css';
 import { CSSTransitionGroup } from 'react-transition-group'; // ES6//entering animation
+import {styleContainer, stylePaper} from './style/LandingPageTheme'
 
 export default class Landing extends Component{
     constructor(props){
@@ -108,12 +110,17 @@ export default class Landing extends Component{
       }
     render(){
         return(
-            <div>
+            <div style = {styleContainer}>
                 <GoogleMap
                     createServices={this.createServices}
                     visible={false}
                 />
-                <h1>Event Beast</h1>
+                <MuiThemeProvider muiTheme={getMuiTheme(BeastTheme)}>
+                <Paper zDepth={4} style = {stylePaper}>
+                Event Beast
+                </Paper>
+                    </MuiThemeProvider>
+                
                 <MuiThemeProvider muiTheme = {getMuiTheme(BeastTheme, NewZIndex)}>
                     <SearchBar 
                         callback={this.callBack}
