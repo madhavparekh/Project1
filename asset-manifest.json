@@ -1,7 +1,11 @@
 {
-  "main.css": "static/css/main.3ad10fb1.css",
-  "main.css.map": "static/css/main.3ad10fb1.css.map",
-  "main.js": "static/js/main.a0923984.js",
-  "main.js.map": "static/js/main.a0923984.js.map",
-  "static\\media\\bpp-bull.png": "static/media/bpp-bull.4183d5b2.png"
+  "main.css": "static/css/main.837c1a43.css",
+  "main.css.map": "static/css/main.837c1a43.css.map",
+  "main.js": "static/js/main.d16f1b8f.js",
+  "main.js.map": "static/js/main.d16f1b8f.js.map",
+  "static\\media\\ReactLogo.png": "static/media/ReactLogo.ad79cff6.png",
+  "static\\media\\darkskyLogo.png": "static/media/darkskyLogo.7021f77c.png",
+  "static\\media\\firebaseLogo.png": "static/media/firebaseLogo.a265d297.png",
+  "static\\media\\materialLogo.svg": "static/media/materialLogo.2445044f.svg",
+  "static\\media\\meetupLogo.svg": "static/media/meetupLogo.b58f43b1.svg"
 }
