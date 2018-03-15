@@ -5,7 +5,6 @@ import GoogleMap from './Components/GoogleMap'
 import MeetUpAPI, {parseMeetup} from './api/MeetUpAPI';
 
 
-
 class App extends Component {
   constructor(){
     super()

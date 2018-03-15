@@ -24,9 +24,8 @@ import {white} from 'material-ui/styles/colors'
 
     render(){
         return(
-            <Toolbar style={{zIndex:1100}}>
+            <Toolbar style={{zIndex:1100, width: '75%'}}>
                 <ToolbarGroup>
-
                 <ToolbarTitle 
                 text="Search in" 
                 style={{color: white, paddingRight: 0}}
@@ -36,7 +35,7 @@ import {white} from 'material-ui/styles/colors'
                     onChange={this.props.onSearchChange}
                     value={this.props.search.city}
                     errorText={this.props.searchError}
-                    style = {{width: 200, margin: 24, fontSize: 20}}
+                    style = {{width: '25%', margin: 24, fontSize: 20}}
                 />
 
                 <ToolbarTitle 
@@ -66,6 +65,7 @@ import {white} from 'material-ui/styles/colors'
                 onChange={this.props.onCategoryChange}
                 labelStyle={{lineHeight: '50px', fontSize: 20}}
                 listStyle = {{paddingTop: 10, paddingBottom:10}}
+                animated={true}
                 >
                     <MenuItem style = {{fontSize: 20}} value={0} primaryText="All Categories"/>
                     {this.props.categories.map((category, index)=>

@@ -15,64 +15,64 @@ var params = {
   eventEndTime: moment('2018-03-15 18:00', 'YYYY-MM-DD HH:MM'),
 };
 
-export function getWeatherData(meet, callback) {
+export function getWeatherData(meet) {
   // console.log(meet);
-
   //if weather data exsists
-  // if (meet.weather) {
-  //   return meet;
-  // }
 
-  var pos = {
-    latitude: meet.lat,
-    longitude: meet.lng,
-  };
-  var time = moment(meet.start);
-  var eventStartTime = meet.start / 1000;
-  var eventEndTime = eventStartTime + meet.duration / 1000;
-  // console.log(`${time}   ${eventStartTime}   ${eventEndTime}`);
-
-  //switching keys
-  DarkSkyApi.apiKey = key2;
-
-  if (meet.start) {
-    DarkSkyApi.loadTime(time, pos).then((data) => {
-      // console.log(data);
-      var weather = {
-        highTemp: data.daily.data[0].temperatureHigh,
-        lowTemp: data.daily.data[0].temperatureLow,
-        summary: data.daily.data[0].summary,
-        icon: data.daily.data[0].icon,
-        windSpeed: data.daily.data[0].windSpeed,
+  return new Promise((resolve, reject) => {
+    if (meet.weather) {
+      resolve(meet);
+    } else {
+      var pos = {
+        latitude: meet.lat,
+        longitude: meet.lng,
       };
-      var secInHr = 60 * 60;
-      var hourBeforeStart = eventStartTime - secInHr;
-      var hourAfterEnd = eventEndTime + secInHr;
+      var time = moment(meet.start);
+      var eventStartTime = meet.start / 1000;
+      var eventEndTime = eventStartTime + meet.duration / 1000;
+      // console.log(`${time}   ${eventStartTime}   ${eventEndTime}`);
 
-      if (meet.duration) {
-        var hourly = [];
-        data.hourly.data.forEach((e) => {
-          if (e.time >= hourBeforeStart && e.time <= hourAfterEnd) {
-            var hrWeather = [];
-            hrWeather.push({
-              time: e.time,
-              temp: e.temperature,
-              summary: e.summary,
-              icon: e.icon,
-              windSpeed: e.windSpeed,
+      //switching keys
+      DarkSkyApi.apiKey = key2;
+
+      if (meet.start) {
+        DarkSkyApi.loadTime(time, pos).then((data) => {
+          // console.log(data);
+          var weather = {
+            highTemp: parseFloat(data.daily.data[0].temperatureHigh).toFixed(2),
+            lowTemp: parseFloat(data.daily.data[0].temperatureLow).toFixed(2),
+            summary: data.daily.data[0].summary,
+            icon: data.daily.data[0].icon,
+            windSpeed: parseFloat(data.daily.data[0].windSpeed).toFixed(2),
+          };
+          var secInHr = 60 * 60;
+          var hourBeforeStart = eventStartTime - secInHr;
+          var hourAfterEnd = eventEndTime + secInHr;
+
+          if (meet.duration) {
+            var hourly = [];
+            data.hourly.data.forEach((e) => {
+              if (e.time >= hourBeforeStart && e.time < hourAfterEnd) {
+                var hrWeather = [];
+                hrWeather.push({
+                  time: e.time,
+                  temp: parseFloat(e.temperature).toFixed(2),
+                  summary: e.summary,
+                  icon: e.icon,
+                  windSpeed: parseFloat(e.windSpeed).toFixed(2),
+                });
+                hourly.push(hrWeather);
+              }
             });
-            hourly.push(hrWeather);
+            weather.hourly = hourly;
           }
+          // console.log(weather);
+          //   return array;
+          meet.weather = weather;
+          // console.log(meet);
+          resolve(meet);
         });
-        weather.hourly = hourly;
       }
-      // console.log(weather);
-      callback(weather);
-      //   return array;
-      meet.weather = weather;
-      // console.log(meet);
-    });
-  }
-
-  return meet;
+    }
+  });
 }
