@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import {
     parseMeetup,
     MeetUpCategories,
-    categories,
   } from '../api/MeetUpAPI';
 import PropTypes from 'prop-types';
 
@@ -53,8 +52,6 @@ export default class MeetUp extends Component{
         });
     }
     componentDidUpdate(prevProps, prevState){
-        const prevSearch = prevProps.search;
-        const search = this.props.search;
         if(this.props.search.update){
             this.fetchData();
         }

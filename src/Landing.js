@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom'
-import SearchBar from './components/SearchBar';
+import SearchBar from './Components/SearchBar';
 import {categories} from './api/MeetUpAPI';
-import GoogleMap from './components/GoogleMap'
+import GoogleMap from './Components/GoogleMap'
 import queryString from 'query-string'
 
 //Theme and styling
@@ -108,12 +108,17 @@ export default class Landing extends Component{
       }
     render(){
         return(
-            <div>
+            <div style = {styleContainer}>
                 <GoogleMap
                     createServices={this.createServices}
                     visible={false}
                 />
-                <h1>Event Beast</h1>
+                <MuiThemeProvider muiTheme={getMuiTheme(BeastTheme)}>
+                <Paper zDepth={4} style = {stylePaper}>
+                Event Beast
+                </Paper>
+                    </MuiThemeProvider>
+                
                 <MuiThemeProvider muiTheme = {getMuiTheme(BeastTheme, NewZIndex)}>
                     <SearchBar 
                         callback={this.callBack}
