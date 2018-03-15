@@ -282,17 +282,16 @@ class App extends Component {
               visible={true}
             />
             {this.state.loading && 
-              <div 
+              <img src = {require('./img/Loader/loader.gif')}
+              alt = 'loading..'
                 style={{
                     zIndex:5,
                     position: 'absolute',
-                    backgroundColor: '#fff',
                     top: '50%',
                     left: '50%',
-                    fontSize: '64px'
+                    width: 100,
                   }}
-                >Loading...
-              </div>}
+                />}
           </div>
           {this.geocoder && <MeetUp geocoder={this.geocoder} search={this.state.query} getMeetUps={this.getMeetUps} />}
         </CSSTransitionGroup>

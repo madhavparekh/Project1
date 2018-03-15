@@ -6,7 +6,7 @@ import BeastTheme from '../style/BeastTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
-// import '../style/InfoDisplay.css';
+import { relative } from 'path';
 
 const style = {
   height: 70,
@@ -97,23 +97,29 @@ export default class InfoDisplay extends Component {
         'linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,1))',
     };
     return (
-      <div style={this.props.collapse ? collapseStlye : expandStlye}>
+      <div style={{maxHeight:370, maxWidth:350}}>
       <h2>{this.props.event.name}</h2>
-      <h3>Start time: {date.toLocaleString()}</h3>
+
+      <h3>Start time: {date.toLocaleString()}
+      {this.props.canLike ? (
+            <div>
+            <span>Likes:</span>
+            <span> {this.props.eventLikes}</span>
+            <img src={require('../img/like/like.png')} style ={{height:'1em', cursor: 'pointer',marginLeft:'0.5em'}} id="like"/>
+            </div>
+          ) : (
+            <div styles={{marginLeft: 20}}>
+            <span>Likes:</span>
+            <span> {this.props.eventLikes}</span>
+            </div>
+          )}
+      </h3>
+      
         <MuiThemeProvider muiTheme={getMuiTheme(BeastTheme)}>
           {this._renderWeather(this.props.event.weather)}
         </MuiThemeProvider>
-
         {/* <div>{this._renderHourlyWeather(this.props.event.weather)}</div> */}
         <a href={this.props.event.link}>Learn More</a>
-        <div style={{ float: 'right' }}>
-          {this.props.canLike ? (
-            <button id="like">Like</button>
-          ) : (
-            <span>Likes</span>
-          )}
-          <span> {this.props.eventLikes}</span>
-        </div>
       </div>
     );
   }
