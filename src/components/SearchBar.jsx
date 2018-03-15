@@ -24,7 +24,7 @@ import {white} from 'material-ui/styles/colors'
 
     render(){
         return(
-            <Toolbar style={{zIndex:1100, width: '75%'}}>
+            <Toolbar style={{zIndex:1100}}>
                 <ToolbarGroup>
                 <ToolbarTitle 
                 text="Search in" 

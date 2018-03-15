@@ -300,7 +300,7 @@ class App extends Component {
             activeMarker={this.state.activeEvent}
             visible={true}
           />
-          {this.state.loading && (
+          {(this.state.loading && (
             <img
               src={require("./img/Loader/loader.gif")}
               alt="loading.."
@@ -312,22 +312,18 @@ class App extends Component {
                 width: 100,
               }}
             />
-            {this.state.loading && 
-              <img src = {require('./img/Loader/loader.gif')}
-              alt = 'loading..'
-                style={{
-                    zIndex:5,
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    width: 100,
-                  }}
-                />}
-          </div>
-          {this.geocoder && <MeetUp geocoder={this.geocoder} search={this.state.query} getMeetUps={this.getMeetUps} />}
-        </CSSTransitionGroup>
-      );
-    }
+          ))}
+        </div>
+        {this.geocoder && (
+          <MeetUp
+            geocoder={this.geocoder}
+            search={this.state.query}
+            getMeetUps={this.getMeetUps}
+          />
+        )}
+      </CSSTransitionGroup>
+    );
+  }
 }
 
 export default App;

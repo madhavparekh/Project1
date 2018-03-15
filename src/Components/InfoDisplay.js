@@ -113,15 +113,9 @@ export default class InfoDisplay extends Component {
           )}
       </h3>
       
-<<<<<<< HEAD
-        <MuiThemeProvider muiTheme={getMuiTheme(BeastTheme)}>
-          {this._renderWeather(this.props.event.weather)}
-        </MuiThemeProvider>
-=======
       {this.props.event.weather && <MuiThemeProvider muiTheme={getMuiTheme(BeastTheme)}>
           {this._renderWeather(this.props.event.weather)}
         </MuiThemeProvider>}
->>>>>>> master
         {/* <div>{this._renderHourlyWeather(this.props.event.weather)}</div> */}
         <a href={this.props.event.link}>Learn More</a>
       </div>

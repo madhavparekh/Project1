@@ -12,7 +12,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './style/App.css';
 import { CSSTransitionGroup } from 'react-transition-group'; // ES6//entering animation
-
+import {styleContainer, stylePaper} from './style/LandingPageTheme'
+import Paper from 'material-ui/Paper'
 export default class Landing extends Component{
     constructor(props){
         super(props);
@@ -115,7 +116,8 @@ export default class Landing extends Component{
                 />
                 <MuiThemeProvider muiTheme={getMuiTheme(BeastTheme)}>
                 <Paper zDepth={4} style = {stylePaper}>
-                Event Beast
+                <div>Event Beast</div>
+                <div>Your guide through concrete junge</div>
                 </Paper>
                     </MuiThemeProvider>
                 
