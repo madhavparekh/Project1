@@ -1,18 +1,17 @@
-import { yellow700 } from 'material-ui/styles/colors';
-import { darkBlack } from 'material-ui/styles/colors';
+import { yellow700, white } from 'material-ui/styles/colors';
 
 const stylePaper = {
-
     width:'100%',
-    height: 200, 
-    backgroundColor: yellow700,
-    color: darkBlack,
-    fontSize: 100,
-    alignSelf: 'stretch'
+    height: '25%',
+    color:'#ffffff',
+    fontSize: 120,
+    alignSelf: 'stretch',
+    fontWeight: 'bold',
+    backgroundColor: '#424242',
 }
 const styleContainer={
     position: 'fixed',
-    top:'25%',
+    top:'20%',
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
