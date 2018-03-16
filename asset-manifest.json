@@ -1,8 +1,8 @@
 {
   "main.css": "static/css/main.9333bbd8.css",
   "main.css.map": "static/css/main.9333bbd8.css.map",
-  "main.js": "static/js/main.1bff2114.js",
-  "main.js.map": "static/js/main.1bff2114.js.map",
+  "main.js": "static/js/main.193eef99.js",
+  "main.js.map": "static/js/main.193eef99.js.map",
   "static\\media\\LogoOne.png": "static/media/LogoOne.7958797c.png",
   "static\\media\\ReactLogo.png": "static/media/ReactLogo.ad79cff6.png",
   "static\\media\\darkskyLogo.png": "static/media/darkskyLogo.c3926b19.png",
@@ -10,6 +10,6 @@
   "static\\media\\googlemapLogo.png": "static/media/googlemapLogo.8ab2ff2b.png",
   "static\\media\\like.png": "static/media/like.8a62b5b4.png",
   "static\\media\\loader.gif": "static/media/loader.afb3f70e.gif",
-  "static\\media\\materialLogo.svg": "static/media/materialLogo.2445044f.svg",
-  "static\\media\\meetupLogo.svg": "static/media/meetupLogo.b58f43b1.svg"
+  "static\\media\\materialLogo.svg": "static/media/materialLogo.e337ff92.svg",
+  "static\\media\\meetupLogo.svg": "static/media/meetupLogo.aae54d55.svg"
 }
