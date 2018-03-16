@@ -55,7 +55,7 @@ export default class Nav extends React.Component {
 					open={this.state.open}
 					onRequestClose={this.handleClose}
 					actions = {<FlatButton label = "Close" primary={true} onClick = {this.handleClose}/>}>
-						We are the best - fuck the rest!
+						Making meet ups easier!
 						<div>
 						<h3>Built using:</h3>
 						<img src = {require('../img/BuiltLogo/ReactLogo.png')} alt='react' style={{width: 100}}/>

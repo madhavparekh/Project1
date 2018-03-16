@@ -107,7 +107,7 @@ class App extends Component {
       );
       var circleOpts = {
         center: newLatLng,
-        radius: radius,
+        radius: radius*0.5,
       };
       var circle = new this.google.maps.Circle(circleOpts);
       this.map.fitBounds(circle.getBounds());
