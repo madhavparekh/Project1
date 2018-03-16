@@ -5,15 +5,15 @@ import { categories } from "./api/MeetUpAPI";
 import GoogleMap from "./Components/GoogleMap";
 import queryString from "query-string";
 import Nav from "./Components/NavBar";
-import BannerCard from "./Components/BannerCard";
-
+import Paper from 'material-ui/Paper'
 //Theme and styling
 import BeastTheme from "./style/BeastTheme";
 import NewZIndex from "./style/NewZIndex";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import "./style/App.css";
+import "./style/Landing.css";
 import { CSSTransitionGroup } from "react-transition-group"; // ES6//entering animation
+import  {stylePaper, styleContainer} from './style/LandingPageTheme'
 
 export default class Landing extends Component {
   constructor(props) {
@@ -109,25 +109,31 @@ export default class Landing extends Component {
   }
   render() {
     return (
-      <div>
-        <MuiThemeProvider muiTheme={getMuiTheme(BeastTheme)}>
-          <Nav className="navBar" />
-        </MuiThemeProvider>
-        <GoogleMap createServices={this.createServices} visible={false} />
-        <MuiThemeProvider muiTheme={getMuiTheme(BeastTheme, NewZIndex)}>
-          <SearchBar
-            callback={this.callBack}
-            onSearchChange={this.onSearchChange}
-            onCategoryChange={this.onCategoryChange}
-            onRadiusChange={this.onRadiusChange}
-            search={this.state.search}
-            searchError={this.state.searchError}
-            categories={categories}
-          />
-        </MuiThemeProvider>
-        <MuiThemeProvider muiTheme={getMuiTheme(BeastTheme)}>
-          <BannerCard />
-        </MuiThemeProvider>
+       <div style = {styleContainer}>
+                <GoogleMap
+                    createServices={this.createServices}
+                    visible={false}
+                />
+                <MuiThemeProvider muiTheme={getMuiTheme(BeastTheme)}>
+                <Paper zDepth={4} style = {stylePaper}>
+                <img src={require('./img/LogoOne.png')} alt='' style={{height: 275, display:'inline', float: 'left'}}/>
+                <div style={{marginLeft: 30, color:' #FBC02D'}}>Event Beast</div>
+                <div style = {{fontSize: 40, color:' #FBC02D',marginLeft: 30}}>Your guide through concrete junge of the city</div>
+                </Paper>
+                    </MuiThemeProvider>
+                
+                <MuiThemeProvider muiTheme = {getMuiTheme(BeastTheme, NewZIndex)}>
+                    <SearchBar 
+                        callback={this.callBack}
+                        onSearchChange={this.onSearchChange}
+                        onCategoryChange={this.onCategoryChange}
+                        onRadiusChange={this.onRadiusChange}
+                        search={this.state.search}
+                        searchError={this.state.searchError}
+                        categories={categories}
+                        style={{width:700}}
+                        />
+                </MuiThemeProvider>
 
         {this.state.redirect.yes && <Redirect push to={this.state.redirect} />}
       </div>
